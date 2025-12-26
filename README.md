@@ -216,50 +216,57 @@ difficulty: 入门
 
 ## 5️⃣ 自然语言处理 (NLP)
 
-### 主流方法
+### 经典方法（统计 NLP）
 
-| 任务 | 传统方法 | 现代方法 | 推荐 |
+| 任务 | 算法 | 性能 |
+|---|---|---|
+| **文本分类** | TF-IDF + 逻辑回归/SVM | 可用但过时 |
+| **序列标注** | 条件随机场 (CRF) | 可靠但慢 |
+| **文本相似度** | 余弦相似度、编辑距离 | 表面化 |
+
+### 📜 现代替代方案
+
+| 经典方法 | 现代替代 | 优势 | 推荐工具 |
 |---|---|---|---|
-| **文本分类** | TF-IDF + 朴素贝叶斯 / SVM | BERT / RoBERTa 微调 | ⭐⭐⭐⭐⭐ |
-| **序列标注** (NER/POS) | 条件随机场 (CRF) | BERT Token Classification | ⭐⭐⭐⭐⭐ |
-| **文本相似度** | 余弦相似度 (TF-IDF) | Sentence-BERT / 预训练向量 | ⭐⭐⭐⭐ |
-| **词向量** | Word2Vec / GloVe | BERT Embeddings | ⭐⭐⭐⭐ |
-| **文本生成** | 模板、规则 | Seq2Seq / Transformer / GPT | ⭐⭐⭐⭐⭐ |
-| **机器翻译** | 短语表 | Transformer | ⭐⭐⭐⭐⭐ |
-| **问答系统** | 模式匹配 | BERT 抽取式 / T5 生成式 | ⭐⭐⭐⭐ |
-| **对话** | 模板、脚本 | 端到端神经网络 / 预训练模型 | ⭐⭐⭐⭐⭐ |
+| TF-IDF + SVM | BERT/RoBERTa 微调 | 精度高 30-50%，上下文理解 | HuggingFace Transformers ✅ |
+| CRF 序列标注 | BERT Token Classification | 精度提升，端到端学习 | HuggingFace Token-Classification Pipeline ✅ |
+| Word2Vec / GloVe | Sentence-BERT / Contextual Embeddings | 语义更强，处理多义词 | SBERT / BGE-M3 ✅ |
+| 余弦相似度 | 预训练模型相似度 | 语义级别匹配 | Sentence-BERT ✅ |
 
-### 核心技术
+### 神经 NLP（深度学习）
 
-- **Transformer** ✅：自注意力，序列全交互，NLP 基础架构
-- **BERT** ✅：双向预训练，理解任务最优
-- **GPT** ✅：自回归生成，文本生成最优
-- **预训练 + 微调**：大数据预训练 → 小数据微调，高效且精度高
+| 模型 | 用途 | 性能 |
+|---|---|---|
+| **Word2Vec / GloVe** | 词向量 | 基础但过时 |
+| **RNN / LSTM** | 序列建模、机器翻译 | 好，但慢 |
+| **Transformer** | **所有 NLP 任务** | 无敌 ⭐⭐⭐⭐⭐ |
+| **BERT** | 文本理解、分类、相似度 | SOTA ⭐⭐⭐⭐⭐ |
+| **GPT** | 文本生成、对话、推理 | 超级智能 ⭐⭐⭐⭐⭐ |
 
 ---
 
 ## 6️⃣ 计算机视觉 (Computer Vision)
 
-### 主流方法
+| 任务 | 算法 | 工具库 |
+|---|---|---|
+| **图像分类** | CNN / ResNet / Vision Transformer | PyTorch, TensorFlow |
+| **目标检测** | YOLO / Faster R-CNN / RetinaNet | OpenCV, TensorFlow |
+| **语义分割** | FCN / U-Net / DeepLab | PyTorch Segmentation |
+| **实例分割** | Mask R-CNN / DETR | torchvision |
+| **人脸识别** | FaceNet / VGGFace / ArcFace | Dlib, InsightFace |
+| **3D 视觉** | PointNet / NeRF | Open3D |
+| **视频理解** | 3D-CNN / SlowFast | PySlowFast |
 
-| 任务 | 传统方法 | 现代方法 | 推荐 |
+### 📜 现代替代方案
+
+| 经典/早期方法 | 现代替代 | 优势 | 推荐工具 |
 |---|---|---|---|
-| **图像分类** | SIFT + SVM | CNN / ResNet / EfficientNet | ⭐⭐⭐⭐⭐ |
-| **目标检测** | 滑动窗口 + SVM | YOLO / Faster R-CNN / SSD | ⭐⭐⭐⭐⭐ |
-| **语义分割** | 像素级 SVM | FCN / U-Net / DeepLab | ⭐⭐⭐⭐⭐ |
-| **实例分割** | 无 | Mask R-CNN / YOLO-v5 | ⭐⭐⭐⭐⭐ |
-| **人脸识别** | 特征工程 | FaceNet / VGGFace / ArcFace | ⭐⭐⭐⭐ |
-| **姿态估计** | OpenPose 等 | CNN 热力图 / HRNet | ⭐⭐⭐⭐ |
-| **3D 视觉** | 几何方法 | PointNet / 神经辐射场 | ⭐⭐⭐ |
-| **视频理解** | 光流 + 手工特征 | 3D-CNN / Transformer | ⭐⭐⭐⭐ |
-
-### 核心技术
-
-- **CNN** ✅：卷积 + 池化，参数共享，局部特征提取高效
-- **ResNet** ✅：残差连接，深网络梯度通畅，革命性架构
-- **YOLO** ✅：实时检测，端到端，工业应用标配
-- **迁移学习**：ImageNet 预训练 → 特定任务微调，数据不足时必选
-- **Transformer** ✅：Vision Transformer, DETR，跨模态学习新方向
+| SIFT + SVM 分类 | Vision Transformer / EfficientNet | 精度高，参数高效 | TIMM / HuggingFace ✅ |
+| Faster R-CNN | YOLO-v8 / DETR | 实时性好，精度高 | Ultralytics ✅ |
+| FCN / U-Net | SegFormer / DINOv2 | 精度提升，训练快 | Transformers ✅ |
+| Mask R-CNN | Mask2Former / DETR+Masks | 精度更高，灵活性强 | MMDetection ✅ |
+| VGGFace / FaceNet | ArcFace / CosFace | 人脸识别精度 99%+ | InsightFace ✅ |
+| 光流 + 手工特征 | Transformer / TimeSformer | 长期依赖捕捉，并行化 | PySlowFast ✅ |
 
 ---
 
